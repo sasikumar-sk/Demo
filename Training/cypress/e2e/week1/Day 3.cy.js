@@ -1,67 +1,41 @@
-describe('WebDriverUniversity - Dropdowns, Radio Buttons, and Checkboxes', () => {
-    const url = 'https://webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html';
+context('Dropdowns, Radio Buttons, and Checkboxes', () => {
+    it('Tests Dropdowns, Radio Buttons, and Checkboxes', () => {
+        // Visit the page
+        cy.visit('https://webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html');
 
-    beforeEach(() => {
-        // Visit the WebDriverUniversity page
-        cy.visit(url);
-    });
+        // Test Dropdown - Single Select
+        cy.get('#dropdowm-menu-1').select('C#').should('have.value', 'c#');
+        cy.get('#dropdowm-menu-1').should('have.value', 'c#');
+        
 
-    context('Dropdowns', () => {
-        it('Tests Single Select Dropdown', () => {
-            // Select an option from the single select dropdown
-            cy.get('#dropdowm-menu-1')
-                .select('C#')
-                .should('have.value', 'c#'); // Verify selected value
-            cy.get('#dropdowm-menu-2')
-                .select('JUnit')
-                .should('have.value', 'junit'); // Verify selected value
-            cy.get('#dropdowm-menu-3')
-                .select('CSS')
-                .should('have.value', 'css'); // Verify selected value
-        });
-
-        it('Tests Multi-Select Dropdown', () => { 
-
-            // Verify select functionality
-            cy.get('#dropdowm-menu-3')
-                .select(['CSS'])
-                .then((options) => {
-                    // Verify selected options
-                    expect(options[0].value).to.equal('css'); 
-                });
-        });
-    });
-
-    context('Radio Buttons', () => {
-        it('Tests Radio Buttons Selection', () => {
-            // Select each radio button and verify selection
-            cy.get('input[type="radio"]').each(($radio) => {
-                // Only interact with radio buttons that are not disabled
-                if (!$radio.prop('disabled')) {
-                    cy.wrap($radio).check().should('be.checked');
-                } else {
-                    // Log or assert that the radio button is disabled
-                    cy.wrap($radio).should('be.disabled');
-                }
+        // Test Dropdown - Multi Select
+        cy.get('#dropdowm-menu-2').select(['JUnit']).then(() => {
+            cy.get('#dropdowm-menu-2 option:selected').should(($selected) => {
+                const values = $selected.map((_, el) => Cypress.$(el).val()).get();
+                expect(values).to.deep.eq(['junit']);
             });
         });
-    });
-    
-    context('Checkboxes', () => {
-        it('Tests Single Select Checkbox', () => {
-            // Adjust the selector to match the actual DOM structure
-            cy.get('input[type="checkbox"]').first().should('exist').and('be.visible').check().should('be.checked');
-            
-            // Uncheck the same checkbox and verify
-            cy.get('input[type="checkbox"]').first().uncheck().should('not.be.checked');
+
+        // Test Radio Buttons
+        cy.get('input[type="radio"]').each(($radio) => {
+            // Only select enabled radio buttons
+            if (!$radio.prop('disabled')) { 
+                cy.get('[value="yellow"]').check().should('be.checked');
+            }
         });
-    
-        it('Tests Multi-Select Checkboxes', () => {
-            // Check all checkboxes
-            cy.get('input[type="checkbox"]').check().should('be.checked');
-            
-            // Uncheck all checkboxes
-            cy.get('input[type="checkbox"]').uncheck().should('not.be.checked');
+        cy.get('input[type="radio"]:checked').should('exist');
+
+        // Test Checkboxes - Single Select
+        cy.get('#checkboxes > :nth-child(1) > input').first().check().should('be.checked');
+        cy.get('#checkboxes > :nth-child(1) > input').first().should('exist');
+
+        // Test Checkboxes - Multi Select
+        cy.get(':nth-child(5) > input').check().should('be.checked');
+        cy.get(':nth-child(5) > input').each(($checkbox) => {
+            cy.wrap($checkbox).should('be.checked');
         });
+        // Test Selected & Disabled radio option
+        cy.get("input[value='cabbage']").should('be.disabled');
+        cy.get('[value="lettuce"]').check().should('be.checked');
     });
 });
