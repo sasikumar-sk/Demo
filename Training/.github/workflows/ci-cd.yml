@@ -37,5 +37,5 @@ jobs:
 
       - name: Deploy
         run: |
-          echo "Deploying to production..."
+          echo "Deploying to stg..."
           # Add your deployment script here
