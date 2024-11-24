@@ -19,11 +19,11 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        working-directory: ./Demo  # Update to the correct path
+        working-directory: ./Training  # Change to point to the Training directory
         run: npm install
 
       - name: Run tests
-        working-directory: ./Demo  # Update to the correct path
+        working-directory: ./Training  # Change to point to the Training directory
         run: npm test
 
   deploy:
@@ -37,5 +37,5 @@ jobs:
 
       - name: Deploy
         run: |
-          echo "Deploying to stg..."
-          # Add your deployment script here
+          echo "Deploying to production..."
+          # Add your actual deployment command here
