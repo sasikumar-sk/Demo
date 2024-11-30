@@ -15,6 +15,6 @@ context('Demo.guru99 site-- Radio Buttons and Checkboxes', () => {
       cy.get('input[type="checkbox"]').each(($checkbox) => {
           cy.wrap($checkbox).should('be.checked');
       });
-      cy.get('input[type="checkbox"]').uncheck().should('not.be.checked');
+      cy.get('#vfb-6-0').uncheck().should('not.be.checked');
   });
 });
