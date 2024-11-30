@@ -1,0 +1,27 @@
+[
+    {
+      "fullName": "John Doe",
+      "email": "johndoe123@test.com",
+      "password": "password123",
+      "confirmPassword": "password123",
+      "mobile": "9876543210",
+      "day": "12",
+      "month": "Apr",
+      "year": "1990",
+      "gender": "Male",
+      "expectedMessage": "Registration successful!"
+    },
+    {
+      "fullName": "Jane Smith",
+      "email": "janesmith456@test.com",
+      "password": "password456",
+      "confirmPassword": "password456",
+      "mobile": "8765432109",
+      "day": "25",
+      "month": "Aug",
+      "year": "1985",
+      "gender": "Female",
+      "expectedMessage": "Registration successful!"
+    }
+  ]
+  

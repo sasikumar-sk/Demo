@@ -1,0 +1,12 @@
+[
+  {
+    "username": "admin",
+    "password": "password123",
+    "expectedMessage": "Login successful!"
+  },
+  {
+    "username": "user1",
+    "password": "wrongpassword",
+    "expectedMessage": "Invalid credentials"
+  }
+]

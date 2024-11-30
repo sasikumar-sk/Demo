@@ -1,0 +1,33 @@
+{
+    "validData": {
+      "fullName": "John Doe",
+      "email": "johndoe123",
+      "password": "SecurePass@123",
+      "retypePassword": "SecurePass@123",
+      "alternateEmail": "johndoe_alt@example.com",
+      "mobileNumber": "9876543210",
+      "birthDate": {
+        "day": "15",
+        "month": "May",
+        "year": "1990"
+      },
+      "gender": "male",
+      "country": "India"
+    },
+    "invalidData": {
+      "fullName": "",
+      "email": "johndoe#example",
+      "password": "123",
+      "retypePassword": "456",
+      "alternateEmail": "invalidemail",
+      "mobileNumber": "abc1234567",
+      "birthDate": {
+        "day": "31",
+        "month": "Feb",
+        "year": "2000"
+      },
+      "gender": "",
+      "country": ""
+    }
+  }
+  
