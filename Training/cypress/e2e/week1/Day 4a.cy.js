@@ -1,5 +1,3 @@
-//JavaScript Alerts -Here are some examples of different JavaScript alerts which can be troublesome for automation
-
 describe('JavaScript Alerts, Confirmations, and Prompts - Validate Result Text', () => {
     beforeEach(() => { 
         cy.visit('https://the-internet.herokuapp.com/javascript_alerts');
