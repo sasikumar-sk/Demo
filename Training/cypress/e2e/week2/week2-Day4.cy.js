@@ -1,52 +1,28 @@
-describe('Test for Sample Form week 2 -Day 4', () => {
-  const url = 'https://mytestingthoughts.com/Sample/home.html';
-
+describe('Data-Driven Login Tests', () => {
   beforeEach(() => {
-      cy.visit(url);
+    // Visit the correct page
+    cy.visit('https://mytestingthoughts.com/Sample/home.html');
   });
 
-  it('should validate the form and submit successfully', () => {
-        // Validate initial page elements
-    cy.get('h2').contains('Registration Form').should('be.visible');
-    cy.get('#fname').should('be.visible');  
-    cy.get('#lname').should('be.visible');  
-    cy.get('#age').should('be.visible'); 
-    cy.get('input[type="radio"]').should('have.length.at.least', 2);  
-    cy.get('#submitButton').should('be.visible').and('be.disabled'); 
+  it('Performs login tests with multiple data sets from testdataWeek2Day4 fixture', () => {
+    // Load the test data from the testdataWeek2Day4.json fixture
+    cy.fixture('testdataWeek2Day4').then((testData) => {
+      testData.forEach((data) => {
+        // Ensure the username input field is available
+        cy.get('input[name="username"]', { timeout: 10000 })
+          .should('be.visible')
+          .type(data.username);
 
-    //  Fill in the form fields
-    cy.get('#fname').type('John');
-    cy.get('#lname').type('Doe');
-    cy.get('#age').type('30');
-    cy.get('input[type="radio"]').first().check(); 
-    cy.get('#submitButton').should('be.enabled');  
+        // Enter password and submit
+        cy.get('input[name="password"]').type(data.password);
+        cy.get('button[type="submit"]').click();
 
-    // Submit the form
-    cy.get('#submitButton').click();
+        // Validate the result
+        cy.get('.message').should('contain', data.expectedMessage);
 
-    // Verify the submission success message
-    cy.get('#message')
-      .should('be.visible')
-      .and('contain.text', 'Form submitted successfully!');
-  });
-
-  it('should validate required fields', () => {
-    // Attempt to submit the form without filling it
-    cy.get('#submitButton').should('be.disabled');
-
-    // Validate error message for First Name
-    cy.get('#lname').type('Doe');  
-    cy.get('#submitButton').click();
-    cy.get('#fname-error').should('contain.text', 'First Name is required');
-
-    // Validate error message for Age
-    cy.get('#fname').type('John');  
-    cy.get('#submitButton').click();
-    cy.get('#age-error').should('contain.text', 'Age is required');
-  });
-
-  it('should validate invalid input for age', () => {
-    cy.get('#age').type('abc');
-    cy.get('#age-error').should('contain.text', 'Please enter a valid age');
+        // Reload the page for the next iteration
+        cy.reload();
+      });
+    });
   });
 });
