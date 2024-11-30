@@ -1,3 +1,5 @@
+//Day 5 ---- Fixtures for the form1
+
 describe('Rediff Registration Form Tests', () => {
   beforeEach(() => {
     // Visit the Rediff registration page
@@ -6,7 +8,7 @@ describe('Rediff Registration Form Tests', () => {
 
   it('Validates registration form with multiple data sets', () => {
     // Load test data from fixture
-    cy.fixture('rediffRegistrationData').then((registrationData) => {
+    cy.fixture('Day5-Fixtures form1-Data').then((registrationData) => {
       registrationData.forEach((data) => {
         // Enter full name
         cy.get('input[name="name"]').clear().type(data.fullName);
@@ -35,10 +37,8 @@ describe('Rediff Registration Form Tests', () => {
         cy.get('input[type="submit"]').click();
 
         // Validate the result (mocked as "Registration successful!")
-        cy.get('.confirmationMessage') // Update selector to the actual confirmation element
+        cy.get('.confirmationMessage')  
           .should('contain', data.expectedMessage);
-
-        // Reload the page for the next iteration
         cy.reload();
       });
     });

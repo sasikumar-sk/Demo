@@ -1,3 +1,6 @@
+
+//"Write test scripts for basic elements in the QAonCloud Home page_Part1 Header, Banner, What QAonCloud Offers, We Love To Help Craft Quality Software, Why QAonCloud,How It Works, How We Help, Key Milestones, Blogs and Resources, Footer"
+
 describe('QAonCloud Homepage UI Tests', () => {
 
   it('QAonCloud Test', function () {
