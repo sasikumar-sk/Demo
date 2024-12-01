@@ -1,0 +1,14 @@
+ 
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "gender": "Male",
+  "hobbies": ["Reading", "Sports"],
+  "department": "Department of Engineering",
+  "username": "test test",
+  "password": "Password123",
+  "confirmPassword": "Password123",
+  "email": "sasi@example.com",
+  "contactNo": "977876578787",
+  "additionalInfo": "This is some additional info."
+}

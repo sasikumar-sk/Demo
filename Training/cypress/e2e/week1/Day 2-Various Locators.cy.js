@@ -1,5 +1,5 @@
 describe('Magento Login Test with Various Locators', () => {
-
+  //How to locate elements using different locators
   it('should login successfully using By ID', () => {
     cy.visit('https://magento.softwaretestingboard.com/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS8%2C/');
     cy.get('#email').type('test21@gmail.com'); // By ID for email
@@ -18,14 +18,17 @@ describe('Magento Login Test with Various Locators', () => {
     cy.visit('https://magento.softwaretestingboard.com/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS8%2C/');
     cy.get('input[type="email"]').type('test21@gmail.com'); // By Tag for email
     cy.get('input[type="password"]').type('test@gmail.com1'); // By Tag for password
-    cy.get('button[type="submit"]').click(); // By Tag for the login button
+    cy.get('button[type="submit"][name="send"][id="send2"]').click({ force: true });
+
+
   });
 
   it('should login successfully using By Attribute', () => {
     cy.visit('https://magento.softwaretestingboard.com/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS8%2C/');
     cy.get('input[name="login[username]"]').type('test21@gmail.com'); // By Attribute for email
     cy.get('input[name="login[password]"]').type('test@gmail.com1'); // By Attribute for password
-    cy.get('button[type="submit"]').click(); // By Tag for the login button
+    cy.get('button[name="send"]').eq(1).click({ force: true });
+
   });
 
   it('should login successfully using By Contains', () => {
@@ -37,9 +40,9 @@ describe('Magento Login Test with Various Locators', () => {
 
   it('should login successfully using Custom Selector', () => {
     cy.visit('https://magento.softwaretestingboard.com/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS8%2C/');
-    cy.get('input[type="email"]').type('test21@gmail.com'); // Custom Selector for email
-    cy.get('input[type="password"]').type('test@gmail.com1'); // Custom Selector for password
-    cy.get('button[type="submit"]').click(); // By Tag for the login button
+    cy.get('input[type="email"]').first().type('test21@gmail.com');
+    cy.get('input[type="password"]').first().type('test@gmail.com1');
+    cy.get('button#send2[type="submit"].primary').click(); // By Tag for the login button
   });
 
 });

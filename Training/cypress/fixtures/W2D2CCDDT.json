@@ -1,0 +1,18 @@
+[
+  {
+    "email": "test@example.com",
+    "password": "invalidpassword123",
+    "errorMessage": "Invalid username or password. Signon failed."
+  },
+  
+  {
+    "email": "",
+    "password": "",
+    "errorMessage": "Email is required."
+  },
+  {
+    "email": "1324@example.com",
+    "password": "",
+    "errorMessage": "Password is required."
+  } 
+]

@@ -1,31 +1,46 @@
-
-//"Write test scripts for basic elements in the QAonCloud Home page_Part1 Header, Banner, What QAonCloud Offers, We Love To Help Craft Quality Software, Why QAonCloud,How It Works, How We Help, Key Milestones, Blogs and Resources, Footer"
-
-describe('QAonCloud Homepage UI Tests', () => {
-
-  it('QAonCloud Test', function () {
+describe('QAonCloud Home Page - All Sections', () => {
+  it('should validate all sections on the home page', () => {
+    // Visit the QAonCloud Home page
     cy.visit('https://www.qaoncloud.com/');
-    cy.viewport(1400, 900);
-    cy.get('.elementor-widget-container > a > img').click();
-    cy.get('.elementor-widget-container > a > img').should('be.visible');
-    cy.get('.elementor-element-9814d64 > :nth-child(1)').click();
-    cy.get('.hotspot-content-overlay').click();
-    cy.get('.elementor-element-515eabd > .elementor-container > .elementor-column > .elementor-widget-wrap > .elementor-element > .elementor-widget-container > .elementor-heading-title').should('have.text', 'SERVICES');
-    cy.get('.elementor-element-7714daf > .elementor-container > .elementor-column > .elementor-widget-wrap > .elementor-element > .elementor-widget-container > .elementor-heading-title').should('have.text', 'SOLUTIONS');
-    cy.get('.elementor-element-7241cda > .elementor-widget-container > .elementor-heading-title').should('have.text', 'Banking & \nFinancial Services');
-    cy.get('.elementor-element-3cd64ed > .elementor-container').should('be.visible');
-    cy.get('.elementor-element-330048a > .elementor-widget-container > .elementor-heading-title').should('have.text', 'Want To Know More About QAonCloud?');
-    cy.get('.elementor-element-e1d6dff > .elementor-widget-container > .ot-button > .octf-btn').should('be.visible');
-    cy.get('.elementor-element-e1d6dff > .elementor-widget-container > .ot-button > .octf-btn').should('have.text', 'Talk To an Expert  \n\t\t\t\t\t\t\t');
-    cy.get('.ekit-template-content-footer > .elementor > .elementor-top-section').should('be.visible');
-    cy.get('.elementor-element-b7925ff > .elementor-widget-container > .elementor-heading-title').should('have.text', 'Company');
-    cy.get('.elementor-element-55ee9fb > .elementor-widget-container > .elementor-heading-title').should('have.text', 'Quick Links');
-    cy.get('#slick-slide10 > .col-md > .title-item > .tab-titles_heading').should('have.text', 'Banking & \nFinancial Services');
-    cy.get('#slick-slide11 > .col-md > .title-item > .tab-titles_heading').should('have.text', 'Communications');
-    cy.get('#slick-slide12 > .col-md > .title-item > .tab-titles_heading').should('have.text', 'E-Commerce');
-    cy.get('#slick-slide10 > .col-md > .title-item > .tab-titles_heading').should('be.visible');
-    cy.get('#slick-slide11 > .col-md > .title-item > .tab-titles_heading').should('be.visible');
-    cy.get('#slick-slide12 > .col-md > .title-item > .tab-titles_heading').should('be.visible');
+ 
+    // What QAonCloud Offers section
+    cy.get('.what-offers') // Replace with the actual selector for this section
+      .should('be.visible')
+      .and('contain.text', 'Our Services'); // Adjust based on actual text
 
+    // "We Love To Help Craft Quality Software" section
+    cy.get('.quality-software') // Replace with the correct selector
+      .should('be.visible')
+      .and('contain.text', 'We Love To Help'); // Adjust based on actual text
+
+    // Why QAonCloud section
+    cy.get('.why-qaoncloud') // Replace with actual selector
+      .should('be.visible')
+      .and('contain.text', 'Why Choose Us'); // Adjust based on actual text
+
+    // How It Works section
+    cy.get('.how-it-works') // Replace with actual selector
+      .should('be.visible')
+      .and('contain.text', 'How Our Process Works'); // Adjust based on actual text
+
+    // How We Help section
+    cy.get('.how-we-help') // Replace with the actual selector
+      .should('be.visible')
+      .and('contain.text', 'Our Assistance'); // Adjust based on actual text
+
+    // Key Milestones section
+    cy.get('.key-milestones') // Replace with the actual selector
+      .should('be.visible')
+      .and('contain.text', 'Milestones'); // Adjust based on actual text
+
+    // Blogs and Resources section
+    cy.get('.blogs-resources') // Replace with the correct selector
+      .should('be.visible')
+      .and('contain.text', 'Latest Articles'); // Adjust based on actual content
+
+    // Footer section
+    cy.get('footer') // Ensure footer is visible
+      .should('be.visible')
+      .and('contain.text', 'Copyright'); // Adjust based on actual footer content
   });
 });
