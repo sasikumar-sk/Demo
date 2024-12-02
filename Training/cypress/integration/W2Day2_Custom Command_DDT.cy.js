@@ -10,8 +10,7 @@ describe('Login Form Error Handling - Invalid Username and Password', () => {
       // Find the case where both username and password are invalid
       W2D2CCDDT.filter((data) => data.username === "invalidUser" && data.password === "invalidPassword123")
         .forEach((data) => {
-          cy.login(data.username, data.password); // Use custom login command 
-          // Assert that the error message is shown
+          cy.login(data.username, data.password); // Use custom login command  
           cy.get('.error-message').should('be.visible').and('contain', data.errorMessage);
         });
     });

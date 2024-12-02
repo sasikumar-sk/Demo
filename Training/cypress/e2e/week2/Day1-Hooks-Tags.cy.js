@@ -8,8 +8,8 @@ describe('Magento "What Is New" Page', () => {
   
     // Hook that runs before each test
     beforeEach(() => {
-      cy.clearCookies(); // Optional: Clear cookies before each test
-      cy.clearLocalStorage(); // Optional: Clear localStorage before each test
+      cy.clearCookies();  
+      cy.clearLocalStorage();  
       cy.visit('https://magento.softwaretestingboard.com/what-is-new.html', { timeout: 10000 });
   
       // Check that the URL and title are correct after loading
@@ -35,8 +35,8 @@ describe('Magento "What Is New" Page', () => {
   
     // After each test
     afterEach(() => {
-      cy.clearCookies(); // Optional: Clear cookies after each test
-      cy.clearLocalStorage(); // Optional: Clear localStorage after each test
+      cy.clearCookies();  
+      cy.clearLocalStorage();  
     });
   
     // After all tests

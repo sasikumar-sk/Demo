@@ -55,9 +55,7 @@ describe('Assertions Test ---opensource-demo.orangehrmlive', () => {
         expect(logo).to.have.attr('alt', 'company-branding');
       });
     });
-  
-  
-  
+   
     it('should have the correct page header text', () => {
       cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
       

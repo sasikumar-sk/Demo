@@ -1,9 +1,7 @@
 describe('Book a Free Demo Form', () => {
-  beforeEach(() => {
-    // Handle uncaught exceptions and prevent Cypress from failing the test
+  beforeEach(() => { 
     cy.on('uncaught:exception', (err, runnable) => {
       if (err.message.includes('popover is not a function') || err.message.includes('oldInputs is not defined')) {
-        // Ignore these specific errors
         return false;
       }
       return true;
