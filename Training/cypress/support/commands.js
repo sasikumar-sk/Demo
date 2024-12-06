@@ -28,4 +28,8 @@ Cypress.Commands.add('login', (email, password) => {
     cy.get('input[name="password"]').clear().type(password); // Clear and type password
     cy.get('button[type="submit"]').click();  // Submit the form
   });
-  
+
+
+  import 'cypress-file-upload';
+
+require('cypress-downloadfile/lib/downloadFileCommand')
