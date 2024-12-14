@@ -11,7 +11,7 @@ describe('Magento "What Is New" Page', () => {
       cy.clearCookies();  
       cy.clearLocalStorage();  
       cy.visit('https://magento.softwaretestingboard.com/what-is-new.html', { timeout: 10000 });
-  
+      cy.wait(5000);
       // Check that the URL and title are correct after loading
       cy.url().should('include', 'what-is-new');
       cy.title().should('include', "What's New");

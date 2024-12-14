@@ -20,6 +20,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+import 'cypress-downloadfile/lib/downloadFileCommand';
 
 
 // Custom command to fill out the email and password fields 

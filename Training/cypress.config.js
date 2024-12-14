@@ -15,6 +15,7 @@ module.exports = defineConfig({
     specPattern: [
       'cypress/e2e/**/*.cy.js',    
       'cypress/integration/**/*.cy.js' 
+      
     ],
 
     // Set the mochawesome reporter
@@ -33,9 +34,9 @@ const path = require('path');
 
 module.exports = {
   projectId: 'prudws',
-  downloadsFolder: 'cypress/downloads',
-
+  downloadsFolder: 'cypress/downloads', 
   e2e: {
+    supportFile: false,
     setupNodeEvents(on, config) {
       const outputPath = path.resolve(__dirname, 'output'); // Constructs a valid path
       console.log('Output Path:', outputPath);

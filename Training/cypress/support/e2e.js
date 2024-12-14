@@ -18,3 +18,8 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+// cypress/support/e2e.js
+import '@testing-library/cypress/add-commands'; // Example of adding custom commands
+// Add any global configurations, setup, or hooks here
+ 

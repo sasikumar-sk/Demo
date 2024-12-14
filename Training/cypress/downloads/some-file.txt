@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name=viewport content="width=device-width,initial-scale=1">
+	<title>File Downloads page for Automation Testing Practice</title>
+	<meta name="description"
+		content="Example can be used for practicing download files scenario in automated tests">
+
+	<meta property="og:locale" content="en_US">
+
+	<meta name="google-adsense-account" content="ca-pub-1056034821646296">
+	<meta name="msvalidate.01" content="C7DB002AC3EF3CA1AFB65068DA704F2B" />
+
+	<meta property="og:type" content="article" />
+	<link rel="canonical" href="https://practice.expandtesting.com/download" />
+
+	<meta property="og:title" content="File Downloads page for Automation Testing Practice">
+
+
+
+
+	<link rel='shortcut icon' , href='/assets/images/favicon.png' type="image/png">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel='stylesheet' , href='/assets/css/main.css?v=602b88ae'>
+
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		crossorigin="anonymous"></script>
+
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-90GRT6N40B"></script>
+
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'G-90GRT6N40B');
+	</script>
+
+	<!-- Google Ads -->
+
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1056034821646296"
+		crossorigin="anonymous"></script>
+
+
+
+
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebPage",
+			"name":  "File Downloads page for Automation Testing Practice",
+			"inLanguage":"en-US",
+			"url": "https://practice.expandtesting.com/download",
+			"description": "Example can be used for practicing download files scenario in automated tests"
+		}
+	</script>
+
+
+
+
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+	
+	<div class="ad-bar">
+	
+	
+	  <p class="text-center ad-bar-text me-1 ms-1"> The <a href="https://mailstack.expandtesting.com/">MailStack</a> Api
+	    (Email Testing) is now available!
+	  </p>
+	
+	</div>
+	
+	<div class="horizontal-divider" </div></div>
+	
+	
+	
+	<header class="navbar navbar-expand-md navbar-dark sticky-top main-navbar">
+	  <nav class="container flex-wrap flex-md-nowrap" aria-label="Main navigation">
+	    <a class="navbar-brand p-0 me-2 logo_title" href="/" aria-label="SUT">
+	      <img src="/assets/images/logo.svg"
+	        alt="Best Website for Practice Automation Testing: Free UI and REST API Examples and Apps. Using Cypress, Playwright, Selenium, WebdriverIO and Postman."
+	        width="45" height="45" class="d-block my-1" role="img" />
+	      <title>SUT</title>&nbsp;Practice
+	    </a>
+	
+	    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar"
+	      aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+	      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi" fill="currentColor" viewBox="0 0 16 16">
+	        <path fill-rule="evenodd"
+	          d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+	        </path>
+	      </svg>
+	    </button>
+	
+	
+	    <div class="navbar-collapse collapse" id="main-navbar">
+	      <ul class="navbar-nav flex-row flex-wrap pt-2 py-md-0">
+	
+	
+	
+	        <li class="nav-item dropdown col-6 col-md-auto">
+	          <a class="nav-link dropdown-toggle" href="/#examples" id="examples-dropdown" role="button"
+	            data-bs-toggle="dropdown" aria-expanded="false">Demos</a>
+	          <ul class="dropdown-menu" aria-labelledby="examples-dropdown">
+	            <li>
+	              <a class="dropdown-item" href="/#examples">Examples</a>
+	            </li>
+	            <li>
+	              <hr class="dropdown-divider">
+	            <li>
+	              <a class="dropdown-item" href="/#apps">Apps</a>
+	            </li>
+	            <li>
+	              <hr class="dropdown-divider">
+	            </li>
+	            <li><a class="dropdown-item" href="/#api">APIs</a></li>
+	
+	            <li>
+	              <hr class="dropdown-divider">
+	            </li>
+	            <li><a class="dropdown-item" href="/#assertions">Assertions</a></li>
+	            <li>
+	              <hr class="dropdown-divider">
+	            </li>
+	            <li><a class="dropdown-item" href="/#reports">Reports</a></li>
+	
+	          </ul>
+	        </li>
+	
+	
+	        <li class="nav-item col-6 col-md-auto">
+	          <a class="nav-link p-2" href="/#tools">Tools</a>
+	        </li>
+	
+	        <li class=" nav-item col-6 col-md-auto">
+	          <a class="nav-link p-2" href="/tips">Automation Tips</a>
+	        </li>
+	
+	        <li class="nav-item col-6 col-md-auto">
+	          <a class="nav-link p-2" href="/test-cases">Test Cases</a>
+	        </li>
+	
+	        <li class="nav-item-border nav-item col-6 col-md-auto">
+	          <a class="nav-link p-2" href="/notes/api/api-docs/">API Testing</a>
+	        </li>
+	
+	        <li class="nav-item col-6 col-md-auto">
+	          <a class="nav-link p-2" href="/about">About</a>
+	        </li>
+	
+	        <li class="nav-item col-6 col-md-auto">
+	          <a class="nav-link p-2" href="/contact">Contact</a>
+	        </li>
+	
+	      </ul>
+	
+	      <hr class="d-md-none text-white-50" />
+	
+	      <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+	
+	      </ul>
+	
+	      <a class="btn btn-sut d-lg-inline-block my-2 my-md-0 ms-md-3"
+	        href="https://expandtesting.com/formations/">Automation Training</a>
+	    </div>
+	  </nav>
+	
+	</header>
+	<main class="flex-shrink-0 py-3">
+
+
+		<style>
+		    ins.adsbygoogle[data-ad-status="unfilled"] {
+		        display: none !important;
+		    }
+		</style>
+		
+		<div class="container-fluid mt-1 mb-3">
+		    <div class="row">
+		        <div class="col-12 border">
+		            <script async
+		                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1056034821646296"
+		                crossorigin="anonymous"></script>
+		            <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article"
+		                data-ad-format="fluid" data-ad-client="ca-pub-1056034821646296" data-ad-slot="4970212221"></ins>
+		            <script>
+		                (adsbygoogle = window.adsbygoogle || []).push({});
+		            </script>
+		
+		        </div>
+		    </div>
+		
+		</div>
+		<div class="page-layout">
+  <div class="container">
+    <nav aria-label="breadcrumb mb-2">
+      <ol class="breadcrumb small">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">File Downloader</li>
+      </ol>
+    </nav>
+    <h1>File Downloader page for Automation Testing Practice</h1>
+
+    <div class="row">
+      <div class="col-md-9">
+        <p>A file download page that can be used by QA, SDET, and developers to practice downloading file test
+          automation scenarios</p>
+      </div>
+
+
+      <div class="row">
+          <div class="col-12">
+              <p class="alert alert-danger">
+                  This page may contain files uploaded by users with potential security risks. Please do not download any
+                  files unless you are sure about their safety.
+              </p>
+      
+              <div>
+                  However, the following files are secure and will always be available and not deleted:
+                  <ul>
+                      <li>cdct.jpg</li>
+                      <li>some-file.json</li>
+                      <li>some-file.txt</li>
+                      <li>wdio.png</li>
+                      <li> xpath-css.png</li>
+                  </ul>
+      
+              </div>
+          </div>
+      </div>
+
+      <div class="d-flex mb-2">
+        <a data-testid=1734108661412_Andrew Tate&#x27;s The Real World (Hustler&#x27;s University).torrent download href="download/1734108661412_Andrew Tate&#x27;s The Real World (Hustler&#x27;s University).torrent">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734108661412_Andrew Tate&#x27;s The Real World (Hustler&#x27;s University).torrent
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=1734109255374_Andrew Tate&#x27;s The Real World (Hustler&#x27;s University).torrent download href="download/1734109255374_Andrew Tate&#x27;s The Real World (Hustler&#x27;s University).torrent">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734109255374_Andrew Tate&#x27;s The Real World (Hustler&#x27;s University).torrent
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=1734121864476_test1.pdf download href="download/1734121864476_test1.pdf">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734121864476_test1.pdf
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=1734121874516_myfile.pdf download href="download/1734121874516_myfile.pdf">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734121874516_myfile.pdf
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=1734121883088_myfile.pdf download href="download/1734121883088_myfile.pdf">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734121883088_myfile.pdf
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=1734123165955_EmployeePerformance_Import_12-12-2024 (1).xlsx download href="download/1734123165955_EmployeePerformance_Import_12-12-2024 (1).xlsx">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734123165955_EmployeePerformance_Import_12-12-2024 (1).xlsx
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=1734124179553_EmployeePerformance_12-12-2024 (1).xlsx download href="download/1734124179553_EmployeePerformance_12-12-2024 (1).xlsx">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734124179553_EmployeePerformance_12-12-2024 (1).xlsx
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=1734124191420_EmployeePerformance_12-12-2024 (1).xlsx download href="download/1734124191420_EmployeePerformance_12-12-2024 (1).xlsx">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734124191420_EmployeePerformance_12-12-2024 (1).xlsx
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=1734124259781_EmployeePerformance_12-12-2024 (1).xlsx download href="download/1734124259781_EmployeePerformance_12-12-2024 (1).xlsx">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734124259781_EmployeePerformance_12-12-2024 (1).xlsx
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=1734124271078_EmployeePerformance_12-12-2024 (1).xlsx download href="download/1734124271078_EmployeePerformance_12-12-2024 (1).xlsx">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734124271078_EmployeePerformance_12-12-2024 (1).xlsx
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=1734124272617_EmployeePerformance_12-12-2024 (1).xlsx download href="download/1734124272617_EmployeePerformance_12-12-2024 (1).xlsx">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734124272617_EmployeePerformance_12-12-2024 (1).xlsx
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=1734136065171_csv-microsoft-excel-example-file-upload.csv download href="download/1734136065171_csv-microsoft-excel-example-file-upload.csv">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734136065171_csv-microsoft-excel-example-file-upload.csv
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=1734136181723_csv-microsoft-excel-example-file-upload.csv download href="download/1734136181723_csv-microsoft-excel-example-file-upload.csv">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734136181723_csv-microsoft-excel-example-file-upload.csv
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=1734136318581_pdf-example-file-upload.pdf download href="download/1734136318581_pdf-example-file-upload.pdf">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734136318581_pdf-example-file-upload.pdf
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=1734142004577_testFile.yaml download href="download/1734142004577_testFile.yaml">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734142004577_testFile.yaml
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=1734142196792_testFile.yaml download href="download/1734142196792_testFile.yaml">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734142196792_testFile.yaml
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=1734142441383_testFile.yaml download href="download/1734142441383_testFile.yaml">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          1734142441383_testFile.yaml
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=cdct.jpg download href="download/cdct.jpg">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          cdct.jpg
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=some-file.json download href="download/some-file.json">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          some-file.json
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=some-file.txt download href="download/some-file.txt">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          some-file.txt
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=wdio.png download href="download/wdio.png">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          wdio.png
+        </a>
+      </div>
+      <div class="d-flex mb-2">
+        <a data-testid=xpath-css.png download href="download/xpath-css.png">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#ec7211" stroke-width="2"
+            stroke-linecap="square" stroke-linejoin="arcs">
+            <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"></path>
+          </svg>
+          xpath-css.png
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+
+	</main>
+
+	<style>
+	  #back-to-top {
+	    border: 1px solid #ccc;
+	    background: #ec7211;
+	  }
+	</style>
+	<footer class="footer mt-auto bg-light">
+	  <div class="container">
+	    <div class="row">
+	      <div class="col-12 text-center">
+	      </div>
+	    </div>
+	
+	
+	
+	    <div class="copyright bg-footer">
+	      <div class="border-top border-2">
+	        <div class="row mt-3">
+	          <div class="col-12 text-center">
+	            <h4>Practice Test Automation WebSite for Web UI and Rest API</h4>
+	            <p>Version: 602b88ae | Copyright <a class="my-link" href="https://expandtesting.com/" target="_blank"
+	                rel="noopener">Expand Testing</a> 2024</p>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</footer>
+	
+	<script src='/assets/plugins/back-to-top/back-to-top.min.js'></script>
+	
+	<script defer>
+	  document.addEventListener("DOMContentLoaded", function () {
+	    addBackToTop({
+	      diameter: 50,
+	      //backgroundColor: 'rgb(255,188,59)',
+	      textColor: '#fff'
+	    })
+	
+	  });
+	</script>
+	<script src='/assets/js/main.js'></script>
+	<script src="/script/script.js"></script>
+
+	<script src="/socket.io/socket.io.min.js"></script>
+	<script>
+		window.onload = function () {
+			const currentURL = window.location.href;
+			const socket = io();
+			const userData = { page: currentURL };
+			socket.emit('pageChange', userData);
+		}
+	</script>
+
+
+</body>
+
+</html>
