@@ -21,7 +21,9 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import 'cypress-downloadfile/lib/downloadFileCommand';
-
+import 'cypress-downloadfile';
+import 'cypress-file-upload';
+import 'cypress-iframe';
 
 // Custom command to fill out the email and password fields 
 Cypress.Commands.add('login', (email, password) => {
@@ -31,6 +33,6 @@ Cypress.Commands.add('login', (email, password) => {
   });
 
 
-  import 'cypress-file-upload';
+
 
 require('cypress-downloadfile/lib/downloadFileCommand')

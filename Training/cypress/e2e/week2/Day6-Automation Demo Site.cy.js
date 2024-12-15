@@ -7,8 +7,9 @@ describe('Automation Testing Registration Page', () => {
   
       // Visit the page
       cy.visit('https://demo.automationtesting.in/Register.html');
+      cy.viewport(1280, 720);
+      
       cy.wait(2000); 
-      cy.viewport(1000, 750);
     });
   
     it('Fills out the registration form', () => {

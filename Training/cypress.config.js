@@ -19,17 +19,21 @@ module.exports = defineConfig({
     ],
 
     // Set the mochawesome reporter
-    reporter: 'mochawesome',
+    reporter: 'cypress-mochawesome-reporter',
     reporterOptions: {
-      reportDir: 'cypress/reports', // Directory where reports will be saved
-      overwrite: false,             // Don't overwrite reports
-      html: true,                   // Generate HTML report
-      json: true,                   // Generate JSON report
+      reportDir: 'cypress/reports/mochawesome-report',
+      overwrite: false,
+      html: true,
+      json: true,
     },
-
+    setupNodeEvents(on, config) {
+      require('cypress-mochawesome-reporter/plugin')(on);
+      return config;
+    },
      
   },
 });
+
 const path = require('path');
 
 module.exports = {
@@ -53,3 +57,6 @@ module.exports = {
   },
 };
 
+ 
+    
+ 
