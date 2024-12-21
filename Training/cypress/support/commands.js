@@ -21,6 +21,8 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import 'cypress-downloadfile/lib/downloadFileCommand';
+import '@4tw/cypress-drag-drop';
+
 import 'cypress-downloadfile';
 import 'cypress-file-upload';
 import 'cypress-iframe';
