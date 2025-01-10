@@ -1,31 +1,58 @@
-describe('Book a Free Demo Form', () => {
-  beforeEach(() => { 
-    cy.on('uncaught:exception', (err, runnable) => {
-      if (err.message.includes('popover is not a function') || err.message.includes('oldInputs is not defined')) {
-        return false;
-      }
-      return true;
-    });
+//working with fixtures in Cypress, data-driven testing, and parameterization
+//Create a Fixture File(cypress/fixtures/Day5_Fixtures_form1_Data.json)
 
-    // Visit the demo form page before each test
-    cy.visit('https://www.orangehrm.com/en/book-a-free-demo');
-    cy.viewport(1200, 850)
-    cy.wait(2000)
+describe('Contact Form Submission - Data Driven Test', () => {
+  beforeEach(() => {
+    cy.visit('https://thinking-tester-contact-list.herokuapp.com/');
   });
 
-  it('should fill out and submit the form with valid data', () => {
-    // Load the fixture Day5_Fixtures_form1_Data.json data
-    cy.fixture('Day5_Fixtures_form1_Data.json').then((data) => { 
-      cy.get('input[name="FullName"]').type(data.fullName); 
-      cy.get('#Form_getForm_Contact').type(data.phoneNumber); 
-      cy.get('#Form_getForm_Email').type(data.email); 
-      cy.get('#Form_getForm_CompanyName').type(data.companyName); 
-      cy.get('select[name="Country"]').select(data.country); 
-      cy.get('#Form_getForm_NoOfEmployees').select(data.employees); 
-      cy.get('#Form_getForm_action_submitForm').click(); 
-      cy.url().should('include', '/thank-you');
-      // Or if there's a success message:
-      // cy.contains('Thank you for your interest').should('be.visible');
+  it('should submit the form with multiple contact details from fixture', function () {
+
+    // Log in with provided credentials
+    cy.get('#email').type('qa_Master123@protonmail.com'); // Email field
+    cy.get('#password').type('qa_Master123@protonmail.com'); // Password field
+    cy.get('#submit').click(); // Click on Login button
+    cy.url().should('include', '/contactList');
+    cy.contains('Add a New Contact').click();
+
+    // Load the contacts data from the fixture
+    cy.fixture('Day5_Fixtures_form1_Data.json').then((contacts) => {
+      // Loop through each contact in the fixture
+      contacts.forEach((contact) => {
+        // Fill in the form fields with data from the fixture
+        cy.get('#firstName').clear().type(contact.firstName);  // First Name
+        cy.get('#lastName').clear().type(contact.lastName);    // Last Name
+        cy.get('#birthdate').clear().type(contact.dateOfBirth); // Date of Birth (yyyy-MM-dd)
+        cy.get('#email').clear().type(contact.email);           // Email
+        cy.get('#phone').clear().type(contact.phone);           // Phone
+        cy.get('#street1').clear().type(contact.streetAddress1); // Street Address 1
+        cy.get('#street2').clear().type(contact.streetAddress2); // Street Address 2
+        cy.get('#city').clear().type(contact.city);              // City
+        cy.get('#stateProvince').clear().type(contact.state);    // State or Province
+        cy.get('#postalCode').clear().type(contact.postalCode);  // Postal Code
+        cy.get('#country').clear().type(contact.country);        // Country 
+        cy.get('#submit').click(); // Submit button 
+        cy.contains('tr.contactTableBodyRow td', 'LALA Doe').click();
+
+      
+        cy.get('#firstName').should('have.text', contact.firstName);  // Validate First Name
+        cy.get('#lastName').should('have.text', contact.lastName);    // Validate Last Name
+        cy.get('#birthdate').should('have.text', contact.dateOfBirth); // Validate Date of Birth
+        cy.get('#email').should('have.text', contact.email);           // Validate Email
+        cy.get('#phone').should('have.text', contact.phone);           // Validate Phone
+        cy.get('#street1').should('have.text', contact.streetAddress1); // Validate Street Address 1
+        cy.get('#street2').should('have.text', contact.streetAddress2); // Validate Street Address 2
+        cy.get('#city').should('have.text', contact.city);              // Validate City
+        cy.get('#stateProvince').should('have.text', contact.state);    // Validate State/Province
+        cy.get('#postalCode').should('have.text', contact.postalCode);  // Validate Postal Code
+        cy.get('#country').should('have.text', contact.country);        // Validate Country
+
+
+        // delete the LALA details
+        cy.get('#delete').click();
+
+          cy.contains('Add a New Contact').click();
+      });
     });
   });
-});
+}); 

@@ -1,5 +1,5 @@
 context('Demo.guru99 site-- Radio Buttons and Checkboxes', () => {
-    //Write Firtst testcase in Cypress
+    //Write First testcase in Cypress
   it('Tests Single Radio Buttons and Checkboxes', () => {
       cy.visit('https://demo.guru99.com/test/radio.html');
 

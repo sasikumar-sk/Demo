@@ -1,8 +1,15 @@
-{
-  "fullName": "sadwa kuaddw",
-  "phoneNumber": "1234567890",
-  "email": "john.doe@example.com",
-  "companyName": "Example Corp",
-  "country": "United States",
-  "employees": "11 - 50"
-}
+[
+  {
+    "firstName": "LALA",
+    "lastName": "Doe",
+    "dateOfBirth": "1990-01-01",
+    "email": "lala.doe@example.com",
+    "phone": "1234567890",
+    "streetAddress1": "123 Main St",
+    "streetAddress2": "Apt 4B",
+    "city": "New York",
+    "state": "NY",
+    "postalCode": "10001",
+    "country": "United States"
+  } 
+]

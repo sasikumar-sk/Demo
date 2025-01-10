@@ -1,7 +1,7 @@
 // Intercept Network Requests (Both XHR and FETCH) with Cypress
 
 describe('Intercept Network Requests for Airports API', () => {
-  const authToken = 'NA3A8Y6UjAvrBDY341pFfSM1';  // Define the authToken at the top level
+  const authToken = 'NA3A8Y6UjAvrBDY341pFfSM1';  // authToken at the top level
 
   it('should intercept GET /airports and POST /airports/distance requests', () => {
     // Intercept the GET request for fetching airports
@@ -15,7 +15,7 @@ describe('Intercept Network Requests for Airports API', () => {
       method: 'GET',
       url: 'https://airportgap.com/api/airports',
       headers: {
-        Authorization: `Bearer ${authToken}`, 
+        Authorization: `Bearer ${authToken}`,
       },
     }).then((response) => {  // Changed from getAirportsResponse to response for consistency 
       expect(response.status).to.eq(200);
@@ -24,19 +24,19 @@ describe('Intercept Network Requests for Airports API', () => {
       expect(response.body).to.have.property('data').that.is.an('array');
 
       // Check the length of the data array to ensure it contains airports (30 airports per page)
-      expect(response.body.data.length).to.eq(30); 
+      expect(response.body.data.length).to.eq(30);
 
       // Validate each airport object in the 'data' array
       response.body.data.forEach((airport) => {
-        expect(airport).to.have.property('id'); // Ensure id is present (e.g., GKA, MAG, YBR)
-        expect(airport).to.have.property('attributes'); // Ensure attributes are present
-        expect(airport.attributes).to.have.property('iata'); // Ensure 'iata' code is present
-        expect(airport.attributes).to.have.property('name'); // Ensure 'name' is present
-        expect(airport.attributes).to.have.property('city'); // Ensure 'city' is present
-        expect(airport.attributes).to.have.property('country'); // Ensure 'country' is present
-        expect(airport.attributes).to.have.property('latitude'); // Ensure 'latitude' is present
-        expect(airport.attributes).to.have.property('longitude'); // Ensure 'longitude' is present
-        expect(airport.attributes).to.have.property('timezone'); // Ensure 'timezone' is present
+        expect(airport).to.have.property('id');  
+        expect(airport).to.have.property('attributes');  
+        expect(airport.attributes).to.have.property('iata');  
+        expect(airport.attributes).to.have.property('name');  
+        expect(airport.attributes).to.have.property('city');  
+        expect(airport.attributes).to.have.property('country');  
+        expect(airport.attributes).to.have.property('latitude');  
+        expect(airport.attributes).to.have.property('longitude');  
+        expect(airport.attributes).to.have.property('timezone');  
       });
 
       // Assert pagination links are present in the response
@@ -58,7 +58,6 @@ describe('Intercept Network Requests for Airports API', () => {
       console.log('Intercepted GET request for airports:', req);
     });
 
-
     // Example of corrected POST request with valid airport codes
     cy.request({
       method: 'POST',
@@ -75,8 +74,6 @@ describe('Intercept Network Requests for Airports API', () => {
       expect(postDistanceResponse.status).to.eq(422);
       expect(postDistanceResponse.body.errors[0].detail).to.include('Please enter valid');
     });
-     
-  
-    });
+
   });
- 
+});
