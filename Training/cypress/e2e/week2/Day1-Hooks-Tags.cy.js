@@ -3,14 +3,14 @@ describe('Magento "What Is New" Page', () => {
     // Run this once before all tests
     before(() => {
       cy.log('Visiting "What Is New" page');
-      cy.visit('https://magento.softwaretestingboard.com/what-is-new.html', { timeout: 10000 });
+      cy.visit('https://magento.softwaretestingboard.com/what-is-new.html');
     });
   
     // Hook that runs before each test
     beforeEach(() => {
       cy.clearCookies();  
       cy.clearLocalStorage();  
-      cy.visit('https://magento.softwaretestingboard.com/what-is-new.html', { timeout: 10000 });
+      cy.visit('https://magento.softwaretestingboard.com/what-is-new.html');
       cy.wait(5000);
       // Check that the URL and title are correct after loading
       cy.url().should('include', 'what-is-new');

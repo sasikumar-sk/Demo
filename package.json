@@ -1,18 +1,16 @@
 {
   "devDependencies": {
     "cypress": "^13.16.1",
-    "jest": "^29.7.0",
     "cypress-downloadfile": "^1.2.4",
-    "cypress-file-upload": "^5.0.8" 
+    "cypress-file-upload": "^5.0.8",
+    "jest": "^29.7.0"
   },
-    "scripts": {
-      "test": "jest",   
-       
-      "delete:reportFolder": "powershell -Command \"if (Test-Path 'mochawesome-report') { Remove-Item -Recurse -Force 'mochawesome-report' } else { Write-Host 'Directory does not exist.' }\"",
-
-      "test:cli": "npm run delete:reportFolder && cypress run",
-      "open:report": "start cypress/reports/mochawesome-report.html",
-      "merge:reports": "mochawesome-merge mochawesome-report/*.json > cypress-combined-report.json",
-      "create:html:report": "npm run merge:reports && marge --reportDir reports cypress-combined-report.json"
-    } 
+  "scripts": {
+    "test": "jest",
+    "delete:reportFolder": "powershell -Command \"if (Test-Path 'mochawesome-report') { Remove-Item -Recurse -Force 'mochawesome-report' } else { Write-Host 'Directory does not exist.' }\"",
+    "test:cli": "npm run delete:reportFolder && cypress run",
+    "open:report": "start cypress/reports/mochawesome-report.html",
+    "merge:reports": "mochawesome-merge mochawesome-report/*.json > cypress-combined-report.json",
+    "create:html:report": "npm run merge:reports && marge --reportDir reports cypress-combined-report.json"
+  }
 }

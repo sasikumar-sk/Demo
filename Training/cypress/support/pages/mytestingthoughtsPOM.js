@@ -9,19 +9,15 @@ class UserRegistrationPage {
   }
 
   get genderMale() {
-    return cy.get('input[name="gender"][value="Male"]');
+    return cy.get('#inlineRadioMale');
   }
 
   get genderFemale() {
-    return cy.get('#inlineRadioMale').check();
+    return cy.get('#inlineRadioFemale');
   }
 
-  get hobbiesReading() {
-    return cy.get('input[name="hobbies"][value="Reading"]');
-  }
-
-  get hobbiesSports() {
-    return cy.get('input[name="hobbies"][value="Sports"]');
+  get hobbiesSelect() {
+    return cy.get('#exampleFormControlSelect2');
   }
 
   get department() {
@@ -29,31 +25,31 @@ class UserRegistrationPage {
   }
 
   get username() {
-    return cy.get('input[name="username"]');
+    return cy.get("input[placeholder='Username']");
   }
 
   get password() {
-    return cy.get('input[name="password"]');
+    return cy.get("input[placeholder='Password']");
   }
 
   get confirmPassword() {
-    return cy.get('input[name="confirmPassword"]');
+    return cy.get("input[placeholder='Confirm Password']");
   }
 
   get email() {
-    return cy.get('input[name="email"]');
+    return cy.get("input[placeholder='E-Mail Address']");
   }
 
   get contactNo() {
-    return cy.get('input[name="contactNo"]');
+    return cy.get("input[placeholder='(639)']");
   }
 
   get additionalInfo() {
-    return cy.get('textarea[name="additionalInfo"]');
+    return cy.get('#exampleFormControlTextarea1');
   }
 
   get submitButton() {
-    return cy.get('button[type="submit"]');
+    return cy.get("button[type='submit']");
   }
 
   // Actions
@@ -62,7 +58,6 @@ class UserRegistrationPage {
   }
 
   fillOutRegistrationForm(userData) {
-    // Fill in the form with provided user data
     this.firstName.type(userData.firstName);
     this.lastName.type(userData.lastName);
 
@@ -73,13 +68,10 @@ class UserRegistrationPage {
       this.genderFemale.check();
     }
 
-    // Select hobbies
-    if (userData.hobbies.includes('Reading')) {
-      this.hobbiesReading.check();
-    }
-    if (userData.hobbies.includes('Sports')) {
-      this.hobbiesSports.check();
-    }
+   // Select hobbies (from multi-select dropdown)
+   if (userData.hobbies.includes('Reading')) {
+    this.hobbiesSelect.select('Reading');
+  } 
 
     // Select department
     this.department.select(userData.department);

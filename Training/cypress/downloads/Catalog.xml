@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<catalog>
+   <number id="Mike">
+      <prefix>00381</prefix>
+      <number>566777201</number>
+      <genre>Private</genre>
+   </number>
+   <number id="Sue">
+      <prefix>0061</prefix>
+      <number>8971341641</number>
+      <genre>Work</genre>
+   </number>
+   <number id="Lee">
+      <prefix>0043</prefix>
+      <number>879336471</number>
+      <genre>Work</genre>
+   </number>
+</catalog>

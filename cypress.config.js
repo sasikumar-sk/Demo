@@ -62,3 +62,11 @@ module.exports = {
   },
 };
 
+module.exports = {
+  // ... other configurations
+  fixturesFolder: 'cypress/fixtures', // If your fixtures are in a different location
+  // ... other configurations
+}; 
+
+
+ 

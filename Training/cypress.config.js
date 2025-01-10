@@ -6,9 +6,10 @@ const mochawesomeReportGenerator = require("mochawesome-report-generator");
 
 module.exports = defineConfig({
   projectId: '17rni8',
+  experimentalStudio: true,
   e2e: {
     experimentalSessionAndOrigin: true,
-    experimentalStudio: true,
+    
     downloadsFolder: 'cypress/downloads',
 
     // Update specPattern to match .cy.js files in both 'e2e' and 'integration' folders
@@ -29,6 +30,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
       return config;
+      
     },
      
   },
@@ -42,6 +44,20 @@ module.exports = {
   e2e: {
     supportFile: false,
     setupNodeEvents(on, config) {
+
+      on('task', {          //task for deleteing file from downloads folder
+        deleteFile(filePath) {
+          return new Promise((resolve, reject) => {
+            fs.unlink(filePath, (err) => {
+              if (err) {
+                reject(err); // Reject if an error occurs
+              } else {
+                resolve(null); // Resolve if the file is deleted successfully
+              }
+            });
+          });
+        }
+      });
       const outputPath = path.resolve(__dirname, 'output'); // Constructs a valid path
       console.log('Output Path:', outputPath);
 
@@ -53,10 +69,10 @@ module.exports = {
 
       // Return config if modified
       return config;
+      
     },
   },
 };
 
  
-    
  

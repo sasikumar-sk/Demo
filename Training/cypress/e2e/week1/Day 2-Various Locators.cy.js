@@ -17,8 +17,8 @@ describe('Magento Login Test with Various Locators', () => {
   it('should login successfully using By Tag', () => {
     cy.visit('https://magento.softwaretestingboard.com/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS8%2C/');
     cy.get('input[type="email"]').type('test21@gmail.com'); // By Tag for email
-    cy.get('input[type="password"]').type('test@gmail.com1'); // By Tag for password
-    cy.get('button[type="submit"][name="send"][id="send2"]').click({ force: true });
+    cy.get('input[name="login[password]"]').type('test@gmail.com1'); // By Tag for password
+    cy.get('button[name="send"]').eq(1).click({ force: true });
 
 
   });

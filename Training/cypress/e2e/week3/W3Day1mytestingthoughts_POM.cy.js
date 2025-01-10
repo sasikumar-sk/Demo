@@ -4,7 +4,7 @@ describe('User Registration Test', () => {
     firstName: "PASO",
     lastName: "Leo",
     gender: "Male",
-    hobbies: ["Reading", "Sports"],
+    hobbies: "Reading",
     department: "Department of Engineering",
     username: "test test",
     password: "Password123",
@@ -21,7 +21,21 @@ describe('User Registration Test', () => {
   it('should successfully submit the registration form', () => { 
     mytestingthoughtsPOM.fillOutRegistrationForm(userData); 
     mytestingthoughtsPOM.submitForm();
- 
-    cy.contains('Registration successful').should('be.visible');
+    cy.get('#success_message').contains('Success').should('be.visible');
+    // Check that the first name in the table matches the entered first name
+    cy.get('tbody > :nth-child(2) > :nth-child(1)')
+      .should('have.text', userData.firstName);
+
+    // Check that the last name in the table matches the entered last name
+    cy.get('tbody > :nth-child(2) > :nth-child(2)')
+      .should('have.text', userData.lastName);
+
+    // Check that the department in the table matches the entered department
+    cy.get('tbody > :nth-child(2) > :nth-child(3)')
+      .should('have.text', userData.department);
+
+    // Check that the email in the table matches the entered email
+    cy.get('tbody > :nth-child(2) > :nth-child(4)')
+      .should('have.text', userData.email);
   });
 });
