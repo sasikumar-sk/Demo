@@ -1,3 +1,8 @@
+//data driven testing using custom commands
+//we will create a custom command to login to the Petstore application.
+//We will use data-driven testing to test the login process with multiple sets of customer data.
+
+
 describe('Login Form Error Handling - Invalid Username and Password', () => {
   const loginUrl = 'https://petstore.octoperf.com/actions/Account.action?signonForm=';  
 

@@ -3,6 +3,10 @@ const rimraf = require("rimraf");
 const mochawesome = require("mochawesome");
 const mochawesomeMerge = require("mochawesome-merge");
 const mochawesomeReportGenerator = require("mochawesome-report-generator");
+const xlsx = require("xlsx"); // Import the xlsx library to read Excel files
+ 
+const fs = require("fs");
+
 
 module.exports = defineConfig({
   projectId: '17rni8',
@@ -58,6 +62,24 @@ module.exports = {
           });
         }
       });
+
+      on('task', {
+        readExcelData({ filePath }) {
+          return new Promise((resolve, reject) => {
+            try {
+              const fullPath = path.resolve(filePath);  // Ensure correct file path resolution
+              const workbook = xlsx.readFile(fullPath);
+              const sheetName = workbook.SheetNames[0];
+              const worksheet = workbook.Sheets[sheetName];
+              const data = xlsx.utils.sheet_to_json(worksheet);
+              resolve(data);  // Return the data
+            } catch (error) {
+              reject(error);  // Reject in case of error
+            }
+          });
+        }
+      });
+
       const outputPath = path.resolve(__dirname, 'output'); // Constructs a valid path
       console.log('Output Path:', outputPath);
 

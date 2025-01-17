@@ -9,7 +9,7 @@ describe('Qaoncloud website', () => {
   it('Header', () => {
     cy.viewport(1524, 768);
     cy.visit('https://www.qaoncloud.com/');
-
+    cy.wait(5000);
     // Title validation
     cy.title().should("be.eq", "QA Testing Services | Software Testing Services - QAonCloud");
 
