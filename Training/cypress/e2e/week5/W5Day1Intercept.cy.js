@@ -1,7 +1,7 @@
 // Intercept Network Requests (Both XHR and FETCH) with Cypress
 
 describe('Intercept Network Requests for Airports API', () => {
-  const authToken = 'NA3A8Y6UjAvrBDY341pFfSM1';  // authToken at the top level
+  const authToken = Cypress.env('authToken'); 
 
   it('should intercept GET /airports and POST /airports/distance requests', () => {
     // Intercept the GET request for fetching airports

@@ -13,7 +13,9 @@ module.exports = defineConfig({
   experimentalStudio: true,
   e2e: {
     experimentalSessionAndOrigin: true,
-    
+    env: {
+      "authToken": "NA3A8Y6UjAvrBDY341pFfSM1"
+    },
     downloadsFolder: 'cypress/downloads',
     fixturesFolder: 'cypress/fixtures',
 
