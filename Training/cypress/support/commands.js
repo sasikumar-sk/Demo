@@ -23,6 +23,7 @@
 import 'cypress-downloadfile/lib/downloadFileCommand';
 import '@4tw/cypress-drag-drop';
 
+
 import 'cypress-downloadfile';
 // cypress/support/commands.js or cypress/support/index.js
 import 'cypress-file-upload';
@@ -73,4 +74,10 @@ Cypress.Commands.add('registerUser', (customer) => {
 
   // Click the Register button
   cy.get('input[value="Register"]').click();
+});
+
+
+Cypress.Commands.add('drag', (source, target) => {
+  cy.get(source).trigger('mousedown', { which: 1 });
+  cy.get(target).trigger('mousemove').trigger('mouseup', { force: true });
 });
