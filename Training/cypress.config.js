@@ -15,6 +15,7 @@ module.exports = defineConfig({
     experimentalSessionAndOrigin: true,
     
     downloadsFolder: 'cypress/downloads',
+    fixturesFolder: 'cypress/fixtures',
 
     // Update specPattern to match .cy.js files in both 'e2e' and 'integration' folders
     specPattern: [
