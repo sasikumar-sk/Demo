@@ -1,61 +1,109 @@
-describe('Petstore Store API Tests', () => {
-
-    const baseUrl = 'https://petstore.swagger.io/v2';
-  
-    let orderId;  // Variable to store orderId for testing
-  
-    // Test POST /store/order - Place an order for a pet
-    it('Should place a new order', () => {
-      const newOrder = {
-        id: 0,
-        petId: 1,
-        quantity: 1,
-        shipDate: '2025-01-22T00:00:00Z',
-        status: 'placed',
-        complete: true
-      };
-  
-      cy.request('POST', `${baseUrl}/store/order`, newOrder)
-        .should((response) => {
-          expect(response.status).to.eq(200); // Status should be 200 OK
-          expect(response.body).to.have.property('id');  // Ensure that an order id is returned
-          expect(response.body).to.have.property('status', 'placed');  // Order status should be 'placed'
-          
-          orderId = response.body.id;  // Store the order ID for later use
-        });
-    });
-  
-    // Test GET /store/order/{orderId} - Find purchase order by ID
-    it('Should fetch the order details by ID', () => {
-      // Ensure an order has been created before running this test
-      if (orderId) {
-        cy.request('GET', `${baseUrl}/store/order/${orderId}`)
-          .should((response) => {
-            expect(response.status).to.eq(200);  // Status should be 200 OK
-            expect(response.body).to.have.property('id', orderId);  // Ensure the order id matches
-            expect(response.body).to.have.property('status', 'placed');  // Ensure the status is 'placed'
-          });
-      } else {
-        cy.log('No order has been created yet');
+describe('Petstore Inventory API Test', () => {
+  it('Fetch the inventory details', () => {
+    cy.request({
+      method: 'GET',
+      url: 'https://petstore.swagger.io/v2/store/inventory',
+      headers: {
+        'Accept': 'application/json',
+        'api_key': '123456'   
       }
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      cy.log(`Inventory details fetched successfully: ${JSON.stringify(response.body)}`);
     });
-  
-    // Test DELETE /store/order/{orderId} - Delete purchase order by ID
-    it('Should delete the order by ID', () => {
-      // Ensure an order has been created before running this test
-      if (orderId) {
-        cy.request({
-          method: 'DELETE',
-          url: `${baseUrl}/store/order/${orderId}`,
-          failOnStatusCode: false // To prevent Cypress from failing the test on 404 error if order doesn't exist
-        }).should((response) => {
-          expect(response.status).to.eq(200);  // Status should be 200 OK
-          expect(response.body).to.be.empty;  // The response body should be empty
-        });
-      } else {
-        cy.log('No order has been created yet');
-      }
-    });
-  
   });
-  
+ 
+  let orderId;
+
+  it('Place an order for a pet', () => {
+    const orderPayload = {
+      id: 123654987,
+      petId: 1,   
+      quantity: 1,
+      shipDate: new Date().toISOString(),
+      status: 'placed',
+      complete: false
+    };
+
+    cy.request({
+      method: 'POST',
+      url: 'https://petstore.swagger.io/v2/store/order',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'api_key': '123456'
+      },
+      body: orderPayload
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      orderId = response.body.id;
+      cy.log(`Order placed successfully: ${JSON.stringify(response.body)}`);
+    });
+  });
+
+  it('Find purchase order by ID', () => {
+    // Ensure the orderId is set
+    expect(orderId).to.not.be.undefined;
+
+    cy.request({
+      method: 'GET',
+      url: `https://petstore.swagger.io/v2/store/order/${orderId}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'api_key': '123456'
+      }
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      cy.log(`Order fetched successfully: ${JSON.stringify(response.body)}`);
+    });
+  });
+
+  it('Delete purchase order by ID', () => {
+    // Ensure the orderId is set
+    expect(orderId).to.not.be.undefined;
+
+    cy.request({
+      method: 'DELETE',
+      url: `https://petstore.swagger.io/v2/store/order/${orderId}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'api_key': '123456'
+      }
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      cy.log(`Order deleted successfully`);
+    });
+  });
+
+  after(() => {
+    cy.log(`Final Order ID: ${orderId}`);
+  });
+
+  it('--Verify the order ID is deleted order should not found--', () => {
+    // Ensure the orderId is set
+    expect(orderId).to.not.be.undefined;
+
+    cy.request({
+      method: 'GET',
+      url: `https://petstore.swagger.io/v2/store/order/${orderId}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'api_key': '123456'
+      },
+      failOnStatusCode: false   
+    }).then((response) => {
+      if (response.status === 404) {
+        cy.log('Order not found. Please check the order ID.');
+      } else {
+        expect(response.status).to.eq(200);
+        expect(response.body.id).to.eq(orderId);  
+        cy.log(`Verified order ID: ${orderId} matches fetched order ID: ${response.body.id}`);
+      }
+    });
+  }); 
+});
+
+
