@@ -4,18 +4,17 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = (on, config) => {
-  // Register a custom task to delete a file
   on('task', {
-    deleteFile(filePath) {
-      return new Promise((resolve, reject) => {
-        fs.unlink(filePath, (err) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(null); // File deleted successfully
-          }
-        });
-      });
-    }
+    readDownloadedFile(fileName) {
+      const filePath = path.join(config.downloadsFolder, fileName);
+
+      // Check if the file exists
+      if (fs.existsSync(filePath)) {
+        return fs.readFileSync(filePath, 'utf8'); // Return the file content as a string
+      }
+      
+      // If the file doesn't exist, return an error message
+      throw new Error(`File ${fileName} not found in downloads folder.`);
+    },
   });
 };

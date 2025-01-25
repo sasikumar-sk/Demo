@@ -1,8 +1,9 @@
-/// <reference types="Cypress" />
+//<reference types="Cypress" />
+//Read data from Excel
 
 import * as XLSX from "xlsx";
 
-describe("Registration Page Tests", () => {
+describe("Read data from Excel for Registration Page Tests", () => {
   let userData;  
 
   // Load data from Excel before the tests
@@ -19,7 +20,7 @@ describe("Registration Page Tests", () => {
     );
   });
 
-  it("should read data from the Excel file", function () {
+  it("TEST: read data from the Excel file", function () {
     // Ensure the data exists and has the expected structure
     expect(userData).to.have.length.greaterThan(0); // Ensure data exists
     cy.log(userData[0]["First Name"]); // Log the first name to verify
@@ -29,7 +30,7 @@ describe("Registration Page Tests", () => {
   });
 
   // Test -1 for filling the form with data from the Excel file and try existing user registration (duplicate user name)
-  it("1. should fill the registration form using data from Excel", function () {
+  it("TEST: fill the registration form using data from Excel(read all data)", function () {
     const data = userData[0];
     cy.visit("https://bookcart.azurewebsites.net/register");
 
@@ -48,7 +49,7 @@ describe("Registration Page Tests", () => {
   });
 
   // Test -2 for short password error (password less than 8 characters)
-  it("2. should show an error if the password is too short", function () {
+  it("TEST : show an error if the password is too short", function () {
     const data = userData[1];
     cy.visit("https://bookcart.azurewebsites.net/register");
 
@@ -68,7 +69,7 @@ describe("Registration Page Tests", () => {
   });
 
   // Test for password and confirm password mismatch
-  it("3.should show an error if the password and confirm password do not match", function () {
+  it("TEST : show an error if the password and confirm password do not match", function () {
     const data = userData[2];
     // Function to generate a random string of a given length (2 characters in this case)
     function generateRandomString(length = 2) {

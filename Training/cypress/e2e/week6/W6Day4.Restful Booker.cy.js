@@ -1,4 +1,4 @@
-//6.Create token, Getbookingids, Getbooking, Create booking
+//Create token, Getbookingids, Getbooking, Create booking
 
 describe("1.Testing Create a token", () => {
   let authTokensaved;

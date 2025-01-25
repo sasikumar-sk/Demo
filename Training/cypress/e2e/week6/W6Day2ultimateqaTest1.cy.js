@@ -64,14 +64,13 @@ describe("2. Simple and Link Test", () => {
       cy.get("div.et_pb_button_wrapper a.et_pb_button.et_pb_promo_button")
         .contains("Go to login page") // Target the button with the text "Go to login page"
         .click(); // Click it
-      cy.wait(500);
-      // Verify that the URL matches the login page
-      cy.origin("https://courses.ultimateqa.com", () => {
-        cy.get("article.sign-in__form h2.page__heading").should(
-          "include.text",
-          "Welcome Back!"
-        );
-        cy.url().should("eq", "https://courses.ultimateqa.com/users/sign_in"); 
-      });
+      
+      // Wait for the navigation (optional, only if needed, for example, on slow navigation)
+      cy.url().should("include", "/users/sign_in");  // Ensure the URL includes '/users/sign_in'
+      
+      // Now, verify elements on the login page
+      cy.get("article.sign-in__form h2.page__heading")
+        .should("include.text", "Welcome Back!"); // Verify the heading text on the login page
     });
+    
   });

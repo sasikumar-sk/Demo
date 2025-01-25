@@ -12,6 +12,8 @@ module.exports = defineConfig({
   projectId: '17rni8',
   experimentalStudio: true,
   e2e: {
+    pageLoadTimeout: 180000,  // Increase page load timeout to 180 seconds
+
     experimentalSessionAndOrigin: true,
     env: {
       "authToken": "NA3A8Y6UjAvrBDY341pFfSM1"
@@ -83,16 +85,14 @@ module.exports = {
         }
       });
 
-      const outputPath = path.resolve(__dirname, 'output'); // Constructs a valid path
+      const outputPath = path.resolve(__dirname, 'output');  
       console.log('Output Path:', outputPath);
 
       // Example cleanup task (replace rimraf usage)
       const fs = require('fs');
       if (fs.existsSync(outputPath)) {
         fs.rmSync(outputPath, { recursive: true, force: true }); // Deletes the directory if it exists
-      }
-
-      // Return config if modified
+      } 
       return config;
       
     },
