@@ -22,4 +22,9 @@ import './commands'
 // cypress/support/e2e.js
 import '@testing-library/cypress/add-commands'; // Example of adding custom commands
 // Add any global configurations, setup, or hooks here
- 
+Cypress.Commands.add('getIframe', (iframeSelector) => {
+    return cy.get(iframeSelector)
+      .its('0.contentDocument.body')
+      .should('not.be.empty')
+      .then(cy.wrap);
+  });

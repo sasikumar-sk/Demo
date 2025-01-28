@@ -10,7 +10,7 @@ const fs = require("fs");
 
 module.exports = defineConfig({
   projectId: '17rni8',
-  experimentalStudio: true,
+  experimentalStudio: true, 
   e2e: {
     pageLoadTimeout: 180000,  // Increase page load timeout to 180 seconds
 
@@ -20,7 +20,7 @@ module.exports = defineConfig({
     },
     downloadsFolder: 'cypress/downloads',
     fixturesFolder: 'cypress/fixtures',
-
+    chromeWebSecurity: false,
     // Update specPattern to match .cy.js files in both 'e2e' and 'integration' folders
     specPattern: [
       'cypress/e2e/**/*.cy.js',    

@@ -4,8 +4,7 @@ describe('Test : Download the XML file and read then extract 2 values', () => {
         cy.visit('https://obstaclecourse.tricentis.com/Obstacles/72946/retry');
         cy.get('#downloadSolution').click();
         cy.wait(2000);  
-
-        // Read the XML file (it's saved in cypress/downloads/sample.xml)
+        // Read the XML file (it's saved in cypress/downloads/Catalog.xml)
         cy.readFile('cypress/downloads/Catalog.xml').then((xmlContent) => {
             // Parse the XML content
             const parser = new DOMParser();

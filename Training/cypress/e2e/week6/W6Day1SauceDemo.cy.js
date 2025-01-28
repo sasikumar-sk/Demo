@@ -3,73 +3,102 @@
 //Check the filters got error when user error_user
 
 
-describe('Adds product. Remove product and Logout Flow', () => {
 
- it("Proceeds through checkout and verifies all steps", () => { 
-  cy.visit("https://www.saucedemo.com/");
-  cy.get("#user-name").type("standard_user");
-  cy.get("#password").type("secret_sauce");
-  cy.get("#login-button").click();
-  cy.url().should("include", "/inventory.html");
 
-  // Add item to the cart
-  cy.contains(".inventory_item_name", "Test.allTheThings() T-Shirt (Red)")
-    .should("be.visible")
-    .then(($product) => {
-      cy.wrap($product)
-        .closest(".inventory_item")
-        .find(".btn_inventory")
-        .click();
-    });  
-  // Click on the cart and proceed to checkout
-  cy.get("#shopping_cart_container").click();
-  cy.contains("Test.allTheThings() T-Shirt (Red)").should("be.visible"); // Validate product in the cart
-  cy.get("#checkout").click();
+describe('Adds product, Remove product and Logout Flow', () => {
 
-  // Checkout: Your Information - Validation without values
-  cy.url().should("include", "/checkout-step-one.html");
-  cy.get("#continue").click(); // Click continue without filling out form
-  cy.get('[data-test="error"]').should(
-    "contain",
-    "Error: First Name is required"
-  ); 
-  // Checkout: Your Information - Fill in the details and continue
-  cy.get("#first-name").type("John");
-  cy.get("#last-name").type("Doe");
-  cy.get("#postal-code").type("12345");
-  cy.get("#continue").click();
-  // Checkout: Overview - Validate information
-  cy.url().should("include", "/checkout-step-two.html");
-  // Validate Payment Information
-  cy.get(".summary_value_label")
-    .contains("SauceCard #31337")
-    .should("be.visible");
-  // Validate Shipping Information
-  cy.contains("Free Pony Express Delivery!").should("be.visible");
-  // Validate Price Information
-  cy.get(".summary_info").within(() => {
-    cy.contains("Item total: $15.99").should("be.visible");
-    cy.contains("Tax: $1.28").should("be.visible");
-    cy.contains("Total: $17.27").should("be.visible");
-  });
-  // Click Finish to complete the order
-  cy.get("#finish").click();
-  // Checkout Complete - Validate success message
-  cy.url().should("include", "/checkout-complete.html");
-  cy.get('[data-test="complete-header"]').should(
-    "contain","Thank you for your order!"
-  );
-  cy.get('[data-test="complete-text"]').should(
-    "contain","Your order has been dispatched, and will arrive just as fast as the pony can get there!"
-  );
+  it("Proceeds through checkout and verifies all steps", () => { 
+   
+    cy.intercept('GET', '**/*.jpg', { statusCode: 200, body: {} }).as('images');
+    cy.intercept('GET', '**/*.png', { statusCode: 200, body: {} }).as('images');
+    cy.intercept('GET', '**/*.css', { statusCode: 200, body: '' }).as('css');  // Optionally block CSS
+    cy.intercept('GET', '**/*.js', { statusCode: 200, body: '' }).as('js'); // Optionally block JavaScript
+    cy.visit("https://www.saucedemo.com/", {
+      timeout: 60000, // Ensure that timeout is long enough
+    });
+    
+      cy.get("#user-name").type("standard_user", { delay: 50 }); // Typing delay can be adjusted for faster execution
+      cy.get("#password").type("secret_sauce", { delay: 50 });
+      cy.get("#login-button").click();
+      cy.url().should("include", "/inventory.html");
+    
+
+    // Now that the session is stored, we can proceed with the test steps
+
+    // Add item to the cart
+    cy.contains(".inventory_item_name", "Test.allTheThings() T-Shirt (Red)")
+      .should("be.visible")
+      .then(($product) => {
+        cy.wrap($product)
+          .closest(".inventory_item")
+          .find(".btn_inventory")
+          .click();
+      });
+
+    // Click on the cart and proceed to checkout
+    cy.get("#shopping_cart_container").click();
+    cy.contains("Test.allTheThings() T-Shirt (Red)").should("be.visible"); // Validate product in the cart
+    cy.get("#checkout").click();
+
+    // Checkout: Your Information - Validation without values
+    cy.url().should("include", "/checkout-step-one.html");
+    cy.get("#continue").click(); // Click continue without filling out form
+    cy.get('[data-test="error"]').should(
+      "contain",
+      "Error: First Name is required"
+    ); 
+
+    // Checkout: Your Information - Fill in the details and continue
+    cy.get("#first-name").type("John", { delay: 50 });
+    cy.get("#last-name").type("Doe", { delay: 50 });
+    cy.get("#postal-code").type("12345", { delay: 50 });
+    cy.get("#continue").click();
+
+    // Checkout: Overview - Validate information
+    cy.url().should("include", "/checkout-step-two.html");
+
+    // Validate Payment Information
+    cy.get(".summary_value_label")
+      .contains("SauceCard #31337")
+      .should("be.visible");
+
+    // Validate Shipping Information
+    cy.contains("Free Pony Express Delivery!").should("be.visible");
+
+    // Validate Price Information
+    cy.get(".summary_info").within(() => {
+      cy.contains("Item total: $15.99").should("be.visible");
+      cy.contains("Tax: $1.28").should("be.visible");
+      cy.contains("Total: $17.27").should("be.visible");
+    });
+
+    // Click Finish to complete the order
+    cy.get("#finish").click();
+
+    // Checkout Complete - Validate success message
+    cy.url().should("include", "/checkout-complete.html");
+    cy.get('[data-test="complete-header"]').should(
+      "contain","Thank you for your order!"
+    );
+    cy.get('[data-test="complete-text"]').should(
+      "contain","Your order has been dispatched, and will arrive just as fast as the pony can get there!"
+    );
+
     // Click "Back Home" to return to the inventory page
-  cy.get("#back-to-products").click();
-  cy.url().should("include", "/inventory.html");
-});
+    cy.get("#back-to-products").click();
+    cy.url().should("include", "/inventory.html");
+  }); 
+
+
+
 
 
     it('Adds product to the cart, removes it, and logs out', () => { 
-      cy.visit('https://www.saucedemo.com/');
+      cy.visit("https://www.saucedemo.com/", {
+        timeout: 60000, // Increase the page load timeout to 60 seconds
+        retryOnStatusCodeFailure: true, // Retry if the status code indicates failure
+        waitForAnimations: false, // Skip waiting for animations (optional)
+      });
       cy.get('#user-name').type('standard_user');
       cy.get('#password').type('secret_sauce');
       cy.get('#login-button').click();

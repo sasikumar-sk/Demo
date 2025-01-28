@@ -24,8 +24,8 @@ import 'cypress-downloadfile';
 
 // cypress/support/commands.js or cypress/support/index.js
 import 'cypress-file-upload';
-
 import 'cypress-iframe';
+
 
 // Custom command to fill out the email and password fields 
 Cypress.Commands.add('login', (email, password) => {
@@ -33,6 +33,17 @@ Cypress.Commands.add('login', (email, password) => {
     cy.get('input[name="password"]').clear().type(password); // Clear and type password
     cy.get('button[type="submit"]').click();  // Submit the form
   });
+
+
+  
+// cypress/support/commands.js
+
+Cypress.Commands.add('getIframe', (iframeSelector) => {
+  return cy.get(iframeSelector)
+    .its('0.contentDocument.body')
+    .should('not.be.empty')
+    .then(cy.wrap);
+});
 
 
  

@@ -181,11 +181,9 @@
     "xml2js": "^0.6.2",
     "yauzl": "^2.10.0"
   },
- 
-"scripts": {
+  "scripts": {
     "test": "jest",
     "test:headless": "cypress run --spec 'cypress/e2e/**/*.cy.js'",
-
     "delete:reportFolder": "powershell -Command \"if (Test-Path 'mochawesome-report') { Remove-Item -Recurse -Force 'mochawesome-report' } else { Write-Host 'Directory does not exist.' }\"",
     "test:cli": "npm run delete:reportFolder && cypress run",
     "open:report": "start cypress/reports/mochawesome-report.html",
