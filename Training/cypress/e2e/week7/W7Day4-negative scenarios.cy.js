@@ -1,3 +1,6 @@
+//Negative Scenarios for getting validation for the fields
+
+
 describe('DummyTicket Visa Application - Negative Scenarios', () => {
 
   beforeEach(() => {

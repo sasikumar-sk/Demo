@@ -1,9 +1,7 @@
 //Test the form submission on the Contact Us page
 //Login Portal Automation
 //Click Buttons Page test diffrenct popups
-
-
-
+ 
 
 describe('Contact Us Page Automation', () => {
     it('should submit a contact form', () => {
