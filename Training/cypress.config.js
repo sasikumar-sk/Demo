@@ -8,50 +8,15 @@ const xlsx = require("xlsx"); // Import the xlsx library to read Excel files
 const fs = require("fs");
 
 
-module.exports = defineConfig({
-  projectId: '17rni8',
-  experimentalStudio: true, 
-  e2e: {
-    pageLoadTimeout: 180000,  // Increase page load timeout to 180 seconds
-
-    experimentalSessionAndOrigin: true,
-    env: {
-      "authToken": "NA3A8Y6UjAvrBDY341pFfSM1"
-    },
-    downloadsFolder: 'cypress/downloads',
-    fixturesFolder: 'cypress/fixtures',
-    chromeWebSecurity: false,
-    // Update specPattern to match .cy.js files in both 'e2e' and 'integration' folders
-    specPattern: [
-      'cypress/e2e/**/*.cy.js',    
-      'cypress/integration/**/*.cy.js' 
-      
-    ],
-
-    // Set the mochawesome reporter
-    reporter: 'cypress-mochawesome-reporter',
-    reporterOptions: {
-      reportDir: 'cypress/reports/mochawesome-report',
-      overwrite: false,
-      html: true,
-      json: true,
-    },
-    setupNodeEvents(on, config) {
-      require('cypress-mochawesome-reporter/plugin')(on);
-      return config;
-      
-    },
-     
-  },
-});
-
+ 
 const path = require('path');
 
 module.exports = {
-  projectId: 'prudws',
+  projectId: 'prudws',//live
   downloadsFolder: 'cypress/downloads', 
   e2e: {
     supportFile: false,
+    pageLoadTimeout: 120000,
     setupNodeEvents(on, config) {
 
       on('task', {          //task for deleteing file from downloads folder

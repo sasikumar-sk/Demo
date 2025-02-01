@@ -15,14 +15,11 @@
 
 import 'cypress-downloadfile/lib/downloadFileCommand';
 import '@4tw/cypress-drag-drop';
-
-// In cypress/support/index.js or commands.js
+ 
 import 'cypress-downloadfile/lib/downloadFile';
 import '@testing-library/cypress/add-commands';
 
-import 'cypress-downloadfile';
-
-// cypress/support/commands.js or cypress/support/index.js
+import 'cypress-downloadfile'; 
 import 'cypress-file-upload';
 import 'cypress-iframe';
 
@@ -34,17 +31,16 @@ Cypress.Commands.add('login', (email, password) => {
     cy.get('button[type="submit"]').click();  // Submit the form
   });
 
+ 
 
+Cypress.Commands.add('getIframeID', (iframeSelector) => {
+    return cy.get(iframeSelector)
+      .its('0.contentDocument') // Access the iframe's document
+      .its('body') // Get the body of the iframe
+      .should('not.be.empty') // Ensure that the iframe content is loaded
+      .then(cy.wrap); // Wrap the body to use Cypress commands on it
+  });
   
-// cypress/support/commands.js
-
-Cypress.Commands.add('getIframe', (iframeSelector) => {
-  return cy.get(iframeSelector)
-    .its('0.contentDocument.body')
-    .should('not.be.empty')
-    .then(cy.wrap);
-});
-
 
  
 // cypress/support/commands.js
@@ -56,8 +52,7 @@ Cypress.Commands.add('dragAndDrop', (source, target) => {
   cy.get(target)  // Get the target element (the element where you want to drop)
     .trigger('mousemove')  // Move the mouse to the target area
     .trigger('mouseup', { force: true });  // Trigger mouse up to drop the element
-  
-  // Optional: Add a small wait if needed to ensure DOM updates after drop action
+   
   cy.wait(500);
 });
 

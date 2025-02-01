@@ -29,7 +29,7 @@ describe("1. Button Interaction Tests", () => {
     // Find the button by its name attribute and click it
     cy.get('button[name="button1"]').click();
     // Verify the page URL or any other element to ensure the click was successful
-    cy.url().should("include", "/button-success");
+    cy.url().should("include", "/button-success/?button1=");
   });
 });
 
@@ -63,7 +63,7 @@ describe("2. Simple and Link Test", () => {
       // Click the "Go to login page" button in Common Scenarios
       cy.get("div.et_pb_button_wrapper a.et_pb_button.et_pb_promo_button")
         .contains("Go to login page") // Target the button with the text "Go to login page"
-        .click(); // Click it
+        .click();  
       
       // Wait for the navigation (optional, only if needed, for example, on slow navigation)
       cy.url().should("include", "/users/sign_in");  // Ensure the URL includes '/users/sign_in'

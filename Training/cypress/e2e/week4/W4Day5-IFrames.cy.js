@@ -1,30 +1,107 @@
-describe('Handle Nested Iframes with Cypress', () => {
+//1.Custom command to interact with elements inside an iframe
+//2.Interact elements inside an iframe using Using Direct Iframe Calls
+ 
+describe('Iframe Sorting Test using the Custom command', () => {
+  beforeEach(() => {
+    cy.visit('https://kitchen.applitools.com/ingredients/iframe'); // Visit the page
+  });
+
+  it('sort the table by name', () => {
+    cy.getIframeID('#the-kitchen-table').find('#column-button-name').click(); 
+    cy.getIframeID('#the-kitchen-table').find('table#fruits-vegetables tbody tr').first().should('contain', 'Apple');
+    cy.getIframeID('#the-kitchen-table').find('#column-button-name').click();  
+    cy.getIframeID('#the-kitchen-table').find('table#fruits-vegetables tbody tr').first().should('contain', 'Pepper');
+  });
+
+  it('sort the table by type', () => {
+    cy.getIframeID('#the-kitchen-table').find('#column-button-type').click();
+    cy.getIframeID('#the-kitchen-table').find('table#fruits-vegetables tbody tr').first().should('contain','Fruit');
+    cy.getIframeID('#the-kitchen-table').find('#column-button-type').click();
+    cy.getIframeID('#the-kitchen-table').find('table#fruits-vegetables tbody tr').first().should('contain', 'Vegetable');
+  });
+
+  it('sort the table by flavor', () => {
+    cy.getIframeID('#the-kitchen-table').find('#column-button-flavor').click();
+    cy.getIframeID('#the-kitchen-table').find('table#fruits-vegetables tbody tr').first().should('contain', 'Bitter');
+    cy.getIframeID('#the-kitchen-table').find('#column-button-flavor').click();
+    cy.getIframeID('#the-kitchen-table').find('table#fruits-vegetables tbody tr').first().should('contain', 'Sweet');
+
+  });
+});
+
 
  
+describe('Iframe Sorting Test using direct Function', () => {
+  beforeEach(() => {
+    cy.visit('https://kitchen.applitools.com/ingredients/iframe');
+  });
 
-  it('should interact with the TinyMCE editor and the email subscription iframe', () => {
-    // Visit the page containing the iframes
-    cy.visit('https://practice.expandtesting.com/iframe');
-    cy.getIframe('#mce_0_ifr') // Accessing the TinyMCE iframe
-      .within(() => {
-        // Focus on the body of the editor and type some text
-        cy.get('body')
-          .type('Hello, this is a test message!')
-          .should('have.text', 'Hello, this is a test message!'); // Verifying text typing
-  
-        // Perform an action like bold
-        cy.get('body').type('{ctrl}b'); // This simulates pressing CTRL+B for bold
-        cy.get('body').should('have.css', 'font-weight', '700'); // Check if the text is bold
-      });
-  
-    // Access the internal Email Subscription Iframe and type the email
-    cy.getIframe('#email-subscribe') // Accessing the email subscription iframe
-      .within(() => {
-        // Type an email in the input field
-        cy.get('input[type="email"]')
-          .type('test@example.com')
-          .should('have.value', 'test@example.com'); // Verifying email entry
-      });
+  // Function to interact with iframe content
+  function getIframeBody() {
+    return cy.get('#the-kitchen-table')
+      .its('0.contentDocument')
+      .its('body')
+      .then(cy.wrap);
+  }
+
+  it('Sort the table by Name column', () => {
+    getIframeBody()
+      .find('#fruits-vegetables')
+      .should('be.visible') 
+      .find('#column-button-name')
+      .click() 
+      cy.wait(500)   
+      getIframeBody()
+        .find('tbody tr')
+        .should('have.length', 6)  // Ensure there are 6 rows
+        .should(($rows) => {
+          const rowTexts = $rows.map((i, el) => {
+            return Cypress.$(el).find('td').first().text(); // Get the 'Name' value (first column)
+          }).get();
+
+          const expectedOrder = ['Apple', 'Banana', 'Carrots', 'Lemon', 'Onion', 'Pepper'];
+          expect(rowTexts).to.deep.eq(expectedOrder);  // Validate the rows are sorted by Name
+        });
   });
-  
+
+  it('Sort the table by Type column', () => {
+    getIframeBody()
+      .find('#fruits-vegetables')
+      .should('be.visible') 
+      .find('#column-button-type')
+      .click()
+ 
+      cy.wait(500)
+      getIframeBody()
+        .find('tbody tr')
+        .should('have.length', 6)
+        .should(($rows) => {
+          const rowTexts = $rows.map((i, el) => {
+            return Cypress.$(el).find('td').eq(1).text(); 
+          }).get();
+
+          const expectedOrder = ['Fruit', 'Fruit', 'Fruit', 'Vegetable', 'Vegetable', 'Vegetable'];
+          expect(rowTexts).to.deep.eq(expectedOrder);  
+        });
   });
+
+  it('Sort the table by Flavor column', () => {
+    getIframeBody()
+      .find('#fruits-vegetables')
+      .should('be.visible') 
+      .find('#column-button-flavor')
+      .click() 
+      cy.wait(500)
+      getIframeBody()
+        .find('tbody tr')
+        .should('have.length', 6)
+        .should(($rows) => {
+          const rowTexts = $rows.map((i, el) => {
+            return Cypress.$(el).find('td').eq(2).text();  
+          }).get();
+
+          const expectedOrder = ['Bitter', 'Bitter', 'Sweet', 'Sweet', 'Sweet', 'Sweet'];
+          expect(rowTexts).to.deep.eq(expectedOrder);  // sorted by Flavor
+        });
+  });
+});

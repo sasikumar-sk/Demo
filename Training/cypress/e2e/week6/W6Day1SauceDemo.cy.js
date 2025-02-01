@@ -17,13 +17,11 @@ describe('Adds product, Remove product and Logout Flow', () => {
       timeout: 60000, // Ensure that timeout is long enough
     });
     
-      cy.get("#user-name").type("standard_user", { delay: 50 }); // Typing delay can be adjusted for faster execution
+      cy.get("#user-name").type("standard_user", { delay: 50 }); // Typing delay  
       cy.get("#password").type("secret_sauce", { delay: 50 });
       cy.get("#login-button").click();
       cy.url().should("include", "/inventory.html");
-    
-
-    // Now that the session is stored, we can proceed with the test steps
+     
 
     // Add item to the cart
     cy.contains(".inventory_item_name", "Test.allTheThings() T-Shirt (Red)")
@@ -97,7 +95,7 @@ describe('Adds product, Remove product and Logout Flow', () => {
       cy.visit("https://www.saucedemo.com/", {
         timeout: 60000, // Increase the page load timeout to 60 seconds
         retryOnStatusCodeFailure: true, // Retry if the status code indicates failure
-        waitForAnimations: false, // Skip waiting for animations (optional)
+        waitForAnimations: false, // Skip waiting for animations 
       });
       cy.get('#user-name').type('standard_user');
       cy.get('#password').type('secret_sauce');
@@ -168,8 +166,7 @@ describe('Adds product, Remove product and Logout Flow', () => {
         cy.get('#password').type('secret_sauce');
         cy.get('#login-button').click();
         cy.get('[data-test="product-sort-container"]').should('be.visible');
-      
-        // Verify the alert message for sorting issue
+       
         cy.on('window:alert', (str) => {
           // Check if the alert message is the expected one
           expect(str).to.include('Sorting is broken! This error has been reported to Backtrace.');
@@ -236,7 +233,7 @@ describe('Adds product, Remove product and Logout Flow', () => {
                 const itemTotal = product1Price + product2Price;
                 cy.log("Item Total: $" + itemTotal.toFixed(2));
     
-                const taxAmount = 3.2; // Adding tax (you can change this logic as per actual requirement)
+                const taxAmount = 3.2; // Adding tax  
                 cy.log("Total taxAmount : $" + taxAmount.toFixed(2));
     
                 const totalAmount = itemTotal + taxAmount;

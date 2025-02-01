@@ -8,9 +8,8 @@ describe('Practice Test Automation - Login Tests', () => {
     cy.intercept('**/*.jpeg', { statusCode: 200, body: {} }).as('blockImages');
     cy.intercept('**/*.gif', { statusCode: 200, body: {} }).as('blockImages');
     cy.intercept('**/*.svg', { statusCode: 200, body: {} }).as('blockImages');
-    cy.intercept('**/ads/*', { statusCode: 200, body: {} }).as('blockAds');
+    cy.intercept('**/ads/*', { statusCode: 200, body: {} }).as('blockAds'); 
 
-    // Visit the page with the blocked resources
     cy.visit('https://practicetestautomation.com/practice-test-login/');
   });
 
@@ -23,7 +22,7 @@ describe('Practice Test Automation - Login Tests', () => {
     { name: 'Desktop', width: 1280, height: 800 } // Desktop screen
   ];
 
-  // Test Case 1: Positive Login Test
+  // Test 1: Positive Login Test
   it('Positive Login Test - should log in successfully and show the correct page', () => {
     // Type valid username and password
     cy.get('#username').clear().type('student');  // Username field
@@ -37,7 +36,7 @@ describe('Practice Test Automation - Login Tests', () => {
     cy.get('.wp-block-button__link.has-text-color.has-background.has-very-dark-gray-background-color').should('be.visible');
   });
 
-  // Test Case 2: Negative Username Test
+  // Test 2: Negative Username Test
   it('Negative Username Test - should show error message for invalid username', () => {
     // Type invalid username and valid password
     cy.get('#username').clear().type('incorrectUser');
@@ -49,7 +48,7 @@ describe('Practice Test Automation - Login Tests', () => {
     cy.get('#error').should('have.text', 'Your username is invalid!');
   });
 
-  // Test Case 3: Negative Password Test
+  // Test 3: Negative Password Test
   it('Negative Password Test - should show error message for invalid password', () => {
     // Type valid username and invalid password
     cy.get('#username').clear().type('student');
@@ -61,7 +60,7 @@ describe('Practice Test Automation - Login Tests', () => {
     cy.get('#error').should('have.text', 'Your password is invalid!');
   });
 
-  // Test Case 4: Positive Login Test on Different Devices
+  // Test 4: Positive Login Test on Different Devices
   devices.forEach(device => {
     it(`Positive Login Test - should work correctly on ${device.name}`, () => {
       // Emulate device using cy.viewport()
@@ -78,7 +77,7 @@ describe('Practice Test Automation - Login Tests', () => {
     });
   });
 
-  // Test Case 5: Custom Viewport Sizes
+  // Test 5: Custom Viewport Sizes
   it('Positive Login Test - Custom viewport sizes', () => {
     cy.viewport(1024, 768);  // Custom tablet size
     cy.get('#username').clear().type('student');
@@ -92,7 +91,7 @@ describe('Practice Test Automation - Login Tests', () => {
     cy.get('.wp-block-button__link.has-text-color.has-background.has-very-dark-gray-background-color').should('be.visible');
   });
 
-  // Test Case 6: Check Portrait and Landscape Orientations
+  // Test 6: Check Portrait and Landscape Orientations
   it('Positive Login Test - Check Portrait and Landscape Orientations', () => {
     // Check in Portrait
     cy.viewport(375, 667); // Mobile Portrait
@@ -119,7 +118,7 @@ describe('Practice Test Automation - Login Tests', () => {
     cy.get('.wp-block-button__link.has-text-color.has-background.has-very-dark-gray-background-color').should('be.visible');
   });
 
-  // Test Case 7: Adapt to Dynamic Viewport Changes
+  // Test 7: Adapt to Dynamic Viewport Changes
   it('Positive Login Test - Adapt to dynamic viewport change', () => {
     // Start with desktop view
     cy.viewport(1280, 800);  // Desktop screen

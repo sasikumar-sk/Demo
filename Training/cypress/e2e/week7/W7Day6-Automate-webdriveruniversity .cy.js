@@ -4,8 +4,7 @@
  
 
 describe('Contact Us Page Automation', () => {
-    it('should submit a contact form', () => {
-      // Visit the page
+    it('should submit a contact form', () => { 
       cy.visit('http://webdriveruniversity.com/Contact-Us/contactus.html');
   
       // Fill out the contact form

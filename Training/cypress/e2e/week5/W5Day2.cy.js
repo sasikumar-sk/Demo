@@ -35,7 +35,7 @@ describe("Read data from Excel for Registration Page Tests", () => {
     cy.visit("https://bookcart.azurewebsites.net/register");
 
     // Fill in the form with data from the Excel file
-    cy.get("#mat-radio-2-input").click();
+    cy.get('#mat-radio-1-input')
     cy.get("#mat-input-0").type(data["First Name"]); // First Name
     cy.get("#mat-input-1")
       .type(data["Last Name"])

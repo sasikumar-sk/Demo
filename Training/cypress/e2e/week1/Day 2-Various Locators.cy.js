@@ -1,5 +1,4 @@
-describe('Magento Login Test with Various Locators', () => {
-  //How to locate elements using different locators
+describe('Magento Login Test with Various Locators', () => { 
   it('should login successfully using By ID', () => {
     cy.visit('https://magento.softwaretestingboard.com/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS8%2C/');
     cy.get('#email').type('test21@gmail.com'); // By ID for email

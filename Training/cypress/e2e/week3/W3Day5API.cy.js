@@ -1,6 +1,4 @@
-describe('PokeAPI Automation Testing', () => {
-  
-    //Automating the RESTful Pokémon API
+describe('PokeAPI Automation Testing', () => { 
     it('should get a list of Pokémon', () => {
       cy.request('https://pokeapi.co/api/v2/pokemon')  // GET request to PokeAPI
         .should((response) => {
