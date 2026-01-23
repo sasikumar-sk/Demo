@@ -115,7 +115,7 @@
     "jsprim": "^2.0.2",
     "lazy-ass": "^1.6.0",
     "listr2": "^3.14.0",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "lodash.once": "^4.1.1",
     "log-symbols": "^4.1.0",
     "log-update": "^4.0.0",
